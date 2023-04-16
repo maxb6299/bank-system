@@ -3,12 +3,13 @@
 // Functions: 
 
 #include <string>
+#include <vector>
 
 class Account
 {
 private:
     float balance;
-    float* transactions; // TODO make this a vector
+    std::vector<int> transactions;
     std::string username;
     std::string password;
     
@@ -19,5 +20,5 @@ public:
     bool checkPassword(std::string p); // returns whether password is right
     std::string getUsername();
     float getBalance();
-    float* getTransactions(); 
+    std::vector<int> getTransactions(); // deposits are +, withdrawals are -
 };

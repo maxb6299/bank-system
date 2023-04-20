@@ -1,6 +1,6 @@
 // menu.cpp
 
-#include "system.cpp"
+#include "system.h"
 #include <iostream>
 using namespace std;
 
@@ -23,7 +23,7 @@ public:
     }
     void mainMenu() // loops options until user inputs q to quit
     {
-        char input;
+        char input = '\0';
 
         while (input != 'Q')
         {
@@ -138,7 +138,14 @@ public:
     }
     void menuDeleteAccount()
     {
-        // TODO
+        cout << "***WARNING***\n"
+             << "This will delete your account.\n"
+             << "Please type in your password to confirm: ";
+
+        string p;
+        cin >> p;
+
+        system.deleteAccount(p);
     }
     void menuSignOut()
     {

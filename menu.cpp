@@ -18,8 +18,7 @@ public:
         char c;
         cout << ">";
         cin >> c;
-        toupper(c);
-        return c;
+        return toupper(c);
     }
     void mainMenu() // loops options until user inputs q to quit
     {
@@ -27,6 +26,8 @@ public:
 
         while (input != 'Q')
         {
+            cout << "------------------------\n";
+            
             cout << "    Main Menu\n\n"
                  << "C - Create Account\n"
                  << "S - Sign In\n"
@@ -47,7 +48,7 @@ public:
 
         cout << "Username: ";
         cin >> u;
-        cout << "Password";
+        cout << "Password: ";
         cin >> p;
         cout << "Initial Deposit: ";
         cin >> b;
@@ -80,9 +81,15 @@ public:
     }
     void accountMenu()
     {
+        cout << "------------------------";
+
+        cout << "\n    Welcome " << system.currentUser->getUsername()
+             << "\n    Your balance is $" << system.currentUser->getBalance() 
+             << "\n\n";
+
         char input;
 
-        while (input != 'S')
+        while (system.currentUser != NULL) // while not signed out
         {
             viewAccountMenu();
             input = getInput();
@@ -115,9 +122,10 @@ public:
         
         system.currentUser->withdrawal(n);
     }
-    void menuViewTransactions()
+    void menuViewTransactions() // ! NOT FUNCTIONAL
     {
-        vector<int> t = system.currentUser->getTransactions();
+        // ! use of t is inefficient because copies array
+        vector<int> t = system.currentUser->getTransactions(); 
 
 
         cout << "Your transaction history is: \n";
@@ -128,8 +136,7 @@ public:
     }
     void viewAccountMenu()
     {
-        cout << "    Welcome\n\n"
-             << "D - Deposit\n"
+        cout << "D - Deposit\n"
              << "W - Withdrawal\n"
              << "V - View Transaction History\n"
              << "M - View This Menu\n"

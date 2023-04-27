@@ -24,7 +24,7 @@ bool Account::deposit(float n)
 // saves transaction & returns false if n <= 0 or n > balance
 bool Account::withdrawal(float n)
 {
-    if (n <= 0)
+    if (n <= 0 || n > balance)
     {
         return false;
     }

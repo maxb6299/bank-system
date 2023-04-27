@@ -83,13 +83,14 @@ public:
     {
         cout << "------------------------";
 
-        cout << "\n    Welcome " << system.currentUser->getUsername()
-             << "\n    Your balance is $" << system.currentUser->getBalance() 
-             << "\n\n";
+        cout 
+        << "\n    Welcome " << system.getCurrentUser()->getUsername()
+        << "\n    Your balance is $" << system.getCurrentUser()->getBalance() 
+        << "\n\n";
 
         char input;
 
-        while (system.currentUser != NULL) // while not signed out
+        while (system.getCurrentUser() != NULL) // while not signed out
         {
             viewAccountMenu();
             input = getInput();
@@ -111,7 +112,7 @@ public:
         cout << "How much would you like to deposit? ";
         cin >> n;
         
-        system.currentUser->deposit(n);
+        system.getCurrentUser()->deposit(n);
     }
     void menuWithdrawal()
     {
@@ -120,12 +121,12 @@ public:
         cout << "How much would you like to withdrawal? ";
         cin >> n;
         
-        system.currentUser->withdrawal(n);
+        system.getCurrentUser()->withdrawal(n);
     }
     void menuViewTransactions() // ! NOT FUNCTIONAL
     {
         // ! use of t is inefficient because copies array
-        vector<int> t = system.currentUser->getTransactions(); 
+        vector<int> t = system.getCurrentUser()->getTransactions(); 
 
 
         cout << "Your transaction history is: \n";

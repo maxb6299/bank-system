@@ -1,5 +1,13 @@
 // system.cpp
 
+// stores array of users (Account objects)
+// allows signing in/out and creation/deletion of accounts
+
+// signs in through setting pointer currentUser to signed in account and 
+// accesses account functions through a getter to ensure currentUser can't be
+// inappropriately changed
+
+
 #include "system.h"
 
 
@@ -8,6 +16,7 @@ System::System()
     users = {};
     currentUser = NULL;
 }
+// false if username is taken
 bool System::createAccount(std::string u, std::string p, int b)
 {
     for (int i = 0; i < users.size(); i++)
@@ -20,6 +29,7 @@ bool System::createAccount(std::string u, std::string p, int b)
     users.emplace_back(u, p, b); 
     return true;
 }
+// false if wrong credentials
 bool System::deleteAccount(std::string p)
 {
     if (!currentUser->checkPassword(p)) {return false;}
@@ -36,6 +46,7 @@ bool System::deleteAccount(std::string p)
 
     return false;
 }
+// return if credentials are correct and set currentUser appropriately
 bool System::signIn(std::string u, std::string p)
 {
     for (int i = 0; i < users.size(); i++)
@@ -49,6 +60,7 @@ bool System::signIn(std::string u, std::string p)
     }
     return false;
 }
+// false if already signed out
 bool System::signOut()
 {
     if (currentUser != NULL)

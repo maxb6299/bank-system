@@ -1,5 +1,9 @@
 // account.cpp
 
+// stores bank account data (transaction history, balance, username, password)
+// allows for deposit/withdrawal and password check
+
+
 #include "account.h"
 
 Account::Account(std::string u, std::string p, float b)
@@ -9,7 +13,7 @@ Account::Account(std::string u, std::string p, float b)
     balance = b > 0 ? b : 0; // set balance to 0 if b is negative
     transactions.reserve(5); // set array to capacity of 5
 }
-// saves transaction and 
+// saves transaction and returns false if n <= 0
 bool Account::deposit(float n)
 {
     if (n <= 0)
@@ -35,7 +39,7 @@ bool Account::withdrawal(float n)
 
     return true;
 }
-// returns whether password is right
+// returns if password is right
 bool Account::checkPassword(std::string p) const
 {
     return p == password;
@@ -48,6 +52,7 @@ float Account::getBalance() const
 {
     return balance;
 }
+// returns array of transaction history
 std::vector<int> Account::getTransactions() const
 {
     return transactions;

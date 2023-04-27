@@ -1,6 +1,7 @@
 // account.h
-// Stores account data and allows for modification of it. Data includes 
-// username, password, balance, transaction history
+
+// stores bank account data (transaction history, balance, username, password)
+// allows for deposit/withdrawal and password check
 
 #include <string>
 #include <vector>
@@ -9,16 +10,18 @@ class Account
 {
 public:
     Account(std::string u, std::string p, float b);
-    bool deposit(float n); // store transaction and return false if n <= 0
-    bool withdrawal(float n); // see above & return false if n > balance
-    bool checkPassword(std::string p) const; // return whether password is right
+    bool deposit(float n); // saves transaction and returns false if n <= 0
+    bool withdrawal(float n); // saves transaction & returns false if n <= 0 
+                              // or n > balance
+    bool checkPassword(std::string p) const; // returns if password is right
     std::string getUsername() const;
     float getBalance() const;
-    std::vector<int> getTransactions() const; // deposits are +, withdrawals are -
+    std::vector<int> getTransactions() const; // array of transaction history
 
 private:
     float balance;
-    std::vector<int> transactions;
+    std::vector<int> transactions; // history of deposits (positive num) and
+                                   // withdrawals (negative num)
     std::string username;
     std::string password;
 };

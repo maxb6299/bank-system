@@ -24,8 +24,10 @@ public:
                                                // appropriately
     bool signOut(); // false if already signed out
     
-    Account* currentUser; // address of currently signed in user 
-                          // (null means signed out)
+    Account* getCurrentUser();
+    
 private:
     std::vector<Account> users;
+    Account* currentUser; // address of currently signed in user 
+                          // (null means signed out)
 };

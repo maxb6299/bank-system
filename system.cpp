@@ -70,3 +70,8 @@ bool System::signOut()
     }
     return false;
 }
+
+Account* System::getCurrentUser()
+{
+    return currentUser;
+}

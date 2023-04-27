@@ -9,6 +9,7 @@ Account::Account(std::string u, std::string p, float b)
     balance = b > 0 ? b : 0; // set balance to 0 if b is negative
     transactions.reserve(5); // set array to capacity of 5
 }
+// saves transaction and 
 bool Account::deposit(float n)
 {
     if (n <= 0)
@@ -20,6 +21,7 @@ bool Account::deposit(float n)
     transactions.push_back(n);
     return true;
 }
+// saves transaction & returns false if n <= 0 or n > balance
 bool Account::withdrawal(float n)
 {
     if (n <= 0)
@@ -33,6 +35,7 @@ bool Account::withdrawal(float n)
 
     return true;
 }
+// returns whether password is right
 bool Account::checkPassword(std::string p) const
 {
     return p == password;

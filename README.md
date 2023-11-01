@@ -1,5 +1,4 @@
 # bank-system
-NOTE: This project is not complete yet. \
 Can be compiled and run with the given Makefile. 
 
 Through the command line, this program simulates an online banking system where different users can: create/delete accounts, sign in/out, check account balances, deposit/withdraw money, view transaction history. Users will have a username and password and sign in with such. 
